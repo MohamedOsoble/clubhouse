@@ -1,0 +1,14 @@
+<div>
+        <%-include('nav')%>
+    <h1>Login: </h1>
+    <form action="/login" method="POST">
+        <label for="username">Username: </label>
+        <input type="text" id="username" name="username">
+        <label for="password">Password: </label>
+        <input type="password" name="password" id="password">
+        <button type="submit">Login</button>
+    </form>
+        <% if(locals.error) { %>
+        <h3><%= error.msg %> </h3>
+        <% } %>
+</div>

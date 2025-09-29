@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All posts</title>
+</head>
+<body>
+    <%- include('nav') %>
+    <div id="all-post-container">
+    <h1>See posts made by all users below</h1>
+            <% posts.forEach((post) => { %>
+            <%- include('./post', {post: post}); %>
+        <% }); %>
+    </div>
+    <div id="create-post-container">
+            <% if(user){ %>
+   <button id="create-post">Create new post</button>
+ <% } else{ %>  
+   <h3>Login to create posts</h3>
+<% } %>
+    </div>
+</body>
+</html>
