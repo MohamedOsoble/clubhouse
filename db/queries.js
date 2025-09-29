@@ -33,16 +33,18 @@ module.exports.addNewUser = async function (username, hash, salt) {
     text: `INSERT INTO users (username, hash, salt) VALUES ($1, $2, $3)`,
     values: [username, hash, salt],
   };
-  console.log(query);
   await pool.query(query);
 };
 
 module.exports.getAllPosts = async function () {
   const query = {
-    text: `SELECT * FROM posts`,
+    text: `SELECT users.id AS author_id, users.username AS author_name, 
+    posts.title AS post_title, posts.content AS post_content, posts.date AS post_date
+     FROM posts LEFT JOIN users on users.id = posts.author_id;`,
     values: [],
   };
-  return ({ rows } = await pool.query(query));
+  const { rows } = await pool.query(query);
+  return rows;
 };
 
 module.exports.createNewPost = async function (authorId, title, content) {

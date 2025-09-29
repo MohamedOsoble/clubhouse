@@ -11,9 +11,14 @@ router.use(async function (req, res, next) {
 router.get("/", controller.homeGet);
 router.get("/view-posts", controller.postsGet);
 router.get("/register", controller.registerGet);
+
+// Login Routes
 router.get("/login", controller.loginGet);
 router.get("/login-success", controller.loginSuccess);
 router.get("/login-failure", controller.loginFailure);
+
+// Logout
+router.get("/logout", controller.logoutGet);
 
 router.post(
   "/login",

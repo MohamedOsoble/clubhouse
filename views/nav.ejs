@@ -1,16 +1,33 @@
-<nav>
-    <ul>
-        <li>
-            <a href="/">Home</a>
-        </li>
-        <li>
-            <a href="/login">Login</a>
-        </li>
-        <li>
-            <a href="/register">Register</a>
-        </li>
-        <li>
-            <a href="/view-posts">Posts</a>
-        </li>
-    </ul>
-</nav>
+<% if(user) { %>
+    <nav>
+        <ul>
+            <li>
+                <a href="/">Home</a>
+            </li>
+            <li>
+                <a href="/view-posts">All posts</a>
+            </li>
+            <li>
+                <a href="/logout">Log out</a>
+            </li>
+        </ul>
+    </nav>
+    <% } else { %>
+    <nav>
+        <ul>
+            <li>
+                <a href="/">Home</a>
+            </li>
+            <li>
+                <a href="/login">Login</a>
+            </li>
+            <li>
+                <a href="/register">Register</a>
+            </li>
+            <li>
+                <a href="/view-posts">Posts</a>
+            </li>
+        </ul>
+    </nav>
+    <% } %>
+

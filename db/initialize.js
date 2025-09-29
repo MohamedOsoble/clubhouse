@@ -1,7 +1,6 @@
 const { pool } = require("./pool");
 const db = require("./queries");
 const { genPassword } = require("../utils/passwordUtils");
-const delay = (s) => new Promise((resolve) => setTimeout(resolve, s * 1000));
 const lorem = require("../utils/textGenerator");
 
 const usersList = [
@@ -59,5 +58,4 @@ async function allPosts() {
   console.log(allPosts);
 }
 
-// createPosts();
-// allPosts();
+allPosts();

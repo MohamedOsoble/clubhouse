@@ -39,6 +39,12 @@ app.use(pgStore);
 app.use(passport.initialize());
 app.use(passport.session());
 
+// Pass user to all middlewares
+app.use(function (req, res, next) {
+  res.locals.user = req.user;
+  next();
+});
+
 // Set up and import all routes
 app.use(Router);
 
