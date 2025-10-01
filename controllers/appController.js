@@ -1,3 +1,4 @@
+const validators = require("../utils/validators");
 const db = require("../db/queries");
 const { all } = require("../routes/routes");
 const { genPassword, validPassword } = require("../utils/passwordUtils");
@@ -32,7 +33,7 @@ module.exports.logoutGet = async function (req, res, next) {
 };
 
 module.exports.registerGet = async function (req, res, next) {
-  res.render("register");
+  const result = res.render("register");
 };
 
 module.exports.postsGet = async function (req, res, next) {
