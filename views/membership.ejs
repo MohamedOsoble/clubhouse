@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update Membership</title>
+</head>
+<body>
+    <%-include('nav')%>
+    <h1>Welcome to the clubhouse</h1>
+    <p>Username: <%=user.username%></p>
+    <p>Email: <%=user.email%></p>
+    <p>Membership Type: 
+        <%if(!user.type){%>
+        None
+        <%} else { %>
+        <%=user.type%>
+    <%}%></p>
+    <div>
+        <h3>To update membership, please enter your secret key below:</h3>
+        <form action="/update-membership" method="POST">
+            <label for="membershipCode">Code:</label>
+            <input type="text" name="membershipCode" id="membershipCode">
+            <button type="submit">Submit Code</button>
+        </form>
+    </div>
+    <% if(locals.message) { %>
+    <h2><%=message%></h2>
+    <%}%>
+    
+</body>
+</html>
