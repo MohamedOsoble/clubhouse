@@ -1,5 +1,6 @@
 <div>
         <%-include('nav')%>
+        <%-include('partials/messages')%>
     <h1>Login: </h1>
     <form action="/login" method="POST">
         <label for="username">Username: </label>
@@ -8,7 +9,5 @@
         <input type="password" name="password" id="password">
         <button type="submit">Login</button>
     </form>
-        <% if(locals.error) { %>
-        <h3><%= error.msg %> </h3>
-        <% } %>
+    <%- include("partials/errors") %>
 </div>

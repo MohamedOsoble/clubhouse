@@ -41,6 +41,10 @@ app.use(passport.session());
 
 // Pass user to all middlewares
 app.use(function (req, res, next) {
+  let pendingPromise = req.user;
+  pendingPromise.then((user) => {
+    res.locals.user = user;
+  });
   res.locals.user = req.user;
   next();
 });

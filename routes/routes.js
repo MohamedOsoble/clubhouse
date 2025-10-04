@@ -18,6 +18,7 @@ router.get("/", (req, res, next) => {
 router.get("/view-posts", postsController.postsGet);
 router.get("/create-post", postsController.getCreatePost);
 router.post("/create-post", postsController.addNewPost);
+router.post("/delete-post", postsController.deletePost);
 
 // Login Routes
 router.get("/login", usersController.loginGet);

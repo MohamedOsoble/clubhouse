@@ -10,14 +10,14 @@
     <div id="all-post-container">
     <h1>See posts made by all users below</h1>
             <% posts.forEach((post) => { %>
-            <%- include('./post', {post: post}); %>
+            <%- include('partials/post', {post: post}); %>
         <% }); %>
     </div>
     <div id="create-post-container">
-            <% if(user){ %>
-   <button id="create-post">Create new post</button>
+            <% if(locals.user.type){ %>
+   <a class="button" href="/create-post">Create post</a>
  <% } else{ %>  
-   <h3>Login to create posts</h3>
+   <h3>You must be a member to create posts</h3>
 <% } %>
     </div>
 </body>

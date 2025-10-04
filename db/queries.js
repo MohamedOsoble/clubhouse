@@ -46,9 +46,10 @@ module.exports.addNewUser = async function (username, email, hash, salt) {
 
 module.exports.getAllPosts = async function () {
   const query = {
-    text: `SELECT users.id AS author_id, users.username AS author_name, 
+    text: `SELECT posts.id as post_id, users.id AS author_id, users.username AS author_name, 
     posts.title AS post_title, posts.content AS post_content, posts.date AS post_date
-     FROM posts LEFT JOIN users on users.id = posts.author_id;`,
+     FROM posts LEFT JOIN users on users.id = posts.author_id
+     ORDER BY post_date DESC;`,
     values: [],
   };
   const { rows } = await pool.query(query);
@@ -67,6 +68,15 @@ module.exports.updateMember = async function (userId, memberType) {
   const query = {
     text: `UPDATE users SET type = ($1) WHERE id = ($2) RETURNING id, type`,
     values: [memberType, userId],
+  };
+  await pool.query(query);
+};
+
+module.exports.deletePost = async function (postId) {
+  const query = {
+    text: `DELETE FROM posts
+    WHERE id = ($1)`,
+    values: [postId],
   };
   await pool.query(query);
 };

@@ -3,11 +3,6 @@ const db = require("../db/queries");
 module.exports.postsGet = async function (req, res, next) {
   const allPosts = await db.getAllPosts();
   res.render("posts", { posts: allPosts });
-  // if (req.user) {
-  //   res.render("posts", { posts: allPosts, user: req.user });
-  // } else {
-  //   res.render("posts", { posts: allPosts, user: false });
-  // }
 };
 
 module.exports.loginPost = async function (req, res, next) {
@@ -19,4 +14,18 @@ module.exports.registerPost = async function (req, res, next) {
   const { salt, hash } = genPassword(req.body.password);
   db.addNewUser(username, hash, salt);
   res.redirect("/login");
+};
+
+module.exports.getCreatePost = async function (req, res, next) {
+  res.render("create-post");
+};
+
+module.exports.addNewPost = async function (req, res, next) {
+  await db.createNewPost(req.body.authorid, req.body.title, req.body.content);
+  res.redirect("/view-posts");
+};
+
+module.exports.deletePost = async function (req, res, next) {
+  await db.deletePost(req.body.postid);
+  res.redirect("/view-posts");
 };
