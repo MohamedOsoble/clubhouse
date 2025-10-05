@@ -25,7 +25,6 @@ if (process.env.NODE_ENV === "PROD") {
 }
 
 module.exports.pool = new Pool({
-  connectionString:
-    "postgresql://clubhouse_vulz_user:mCHSKoic1PEEnt40Hxrw8psAYr7JVxwv@dpg-d3h9pee3jp1c73fchol0-a/clubhouse_vulz",
+  connectionString: process.env.internal_db_url,
 });
 module.exports.dbConfig = config;
