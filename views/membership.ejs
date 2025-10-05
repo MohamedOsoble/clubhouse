@@ -1,32 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Update Membership</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Update Membership</title>
+  <link href="style.css" rel="stylesheet">
 </head>
+
 <body>
+  <div class="page-wrapper">
     <%-include('nav')%>
-    <h1>Welcome to the clubhouse</h1>
-    <p>Username: <%=user.username%></p>
-    <p>Email: <%=user.email%></p>
-    <p>Membership Type: 
+    <div class="content">
+      <h1>Welcome to the clubhouse</h1>
+      <p><strong>Username:</strong> <%=user.username%></p>
+      <p><strong>Email:</strong> <%=user.email%></p>
+      <p><strong>Membership Type:</strong>
         <%if(!user.type){%>
         None
         <%} else { %>
         <%=user.type%>
-    <%}%></p>
+        <%}%></p>
     <div>
         <h3>To update membership, please enter your secret key below:</h3>
         <form action="/update-membership" method="POST">
-            <label for="membershipCode">Code:</label>
+            <label for="membershipCode"><strong>Code: </strong></label>
             <input type="text" name="membershipCode" id="membershipCode">
             <button type="submit">Submit Code</button>
         </form>
     </div>
     <% if(locals.message) { %>
-    <h2><%=message%></h2>
-    <%}%>
-    
+      <h2><%=message%></h2>
+      <%}%>
+    </div>
+    </div>
+
 </body>
 </html>

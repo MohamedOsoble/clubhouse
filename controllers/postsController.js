@@ -2,6 +2,10 @@ const db = require("../db/queries");
 
 module.exports.postsGet = async function (req, res, next) {
   const allPosts = await db.getAllPosts();
+  allPosts.forEach((post) => {
+    let date = new Date(post.post_date);
+    post.post_date = date.toUTCString();
+  });
   res.render("posts", { posts: allPosts });
 };
 

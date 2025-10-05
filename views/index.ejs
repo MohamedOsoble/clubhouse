@@ -1,13 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Clubhouse homepage</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Clubhouse homepage</title>
+  <link href="style.css" rel="stylesheet">
 </head>
+
 <body>
+  <div class="page-wrapper">
     <%-include('nav')%>
-    <h1>Welcome to the clubhouse</h1>
-    <%-include('partials/messages.ejs')%>
+    <div class="content column">
+      <h1>Welcome to the clubhouse</h1>
+      <%-include('partials/messages.ejs')%>
+      <% if(locals.user) {%>
+      <h2>You are currently logged in as: <%=locals.user.username%></h2>
+      <% if(!locals.user.type) { %>
+      <h3>You are currently not a member, please update your membership <a href="/view-membership">here</a></h3>
+      <%}%>
+      <% } else { %>
+      <h2>You are currently not logged in, please log in: <a href="/login">here</a></h2>
+      <% } %>
+    </div>
+  </div>
 </body>
+
 </html>
