@@ -26,7 +26,7 @@ const pgStore = expressSession({
   store: new pgSession({
     pool: pool,
     tableName: "session",
-    conObject: dbConfig,
+    conString: process.env.internal_db_url,
   }),
   secret: process.env.SOME_SECRET,
   resave: false,
